@@ -29,4 +29,9 @@ public class Vertex {
         Vertex v = (Vertex) obj;
         return (v != null && v.id == this.id && v.name.equals(this.name));
     }
+
+    public Vertex(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
 }
