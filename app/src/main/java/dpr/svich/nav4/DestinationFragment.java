@@ -1,7 +1,7 @@
 package dpr.svich.nav4;
 
 
-import android.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import androidx.navigation.Navigation;
