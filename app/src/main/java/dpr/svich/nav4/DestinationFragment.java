@@ -29,6 +29,7 @@ public class DestinationFragment extends Fragment {
 
     private RecyclerView destinationRecyclerView;
     private Room startRoom;
+    private int pos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,25 +38,32 @@ public class DestinationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_destination, container, false);
         // TODO: eliminate bicycle
         final List<Room> rooms = new ArrayList<>();
-        rooms.add(new Room("Вход", RoomType.ADMINISTRATION));
-        rooms.add(new Room("Ауд. 3а", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 4", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 5", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 6", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 31", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 19", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 20", RoomType.LECTYRE));
-        rooms.add(new Room("М. туалет", RoomType.TOILET));
-        rooms.add(new Room("Каб. декана", RoomType.ADMINISTRATION));
-        rooms.add(new Room("Деканат", RoomType.ADMINISTRATION));
-        rooms.add(new Room("Ауд. 35", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 37", RoomType.LECTYRE));
-        rooms.add(new Room("Ауд. 40", RoomType.LECTYRE));
-        rooms.add(new Room("Ж. туалет", RoomType.TOILET));
+        rooms.add(new Room(1,"Вход", RoomType.ADMINISTRATION));
+        rooms.add(new Room(4,"Ауд. 1", RoomType.LECTYRE));
+        rooms.add(new Room(6,"Ауд. 2", RoomType.LECTYRE));
+        rooms.add(new Room(9,"Ауд. 3", RoomType.LECTYRE));
+        rooms.add(new Room(11,"Ауд. 3a", RoomType.LECTYRE));
+        rooms.add(new Room(12,"Ауд. 4", RoomType.LECTYRE));
+        rooms.add(new Room(7,"Ауд. 5", RoomType.LECTYRE));
+        rooms.add(new Room(14,"Столовая", RoomType.ADMINISTRATION));
+        rooms.add(new Room(20,"Ауд. 9", RoomType.LECTYRE));
+        rooms.add(new Room(22,"Ауд. 10", RoomType.LECTYRE));
+        rooms.add(new Room(24,"Ауд. 11", RoomType.LECTYRE));
+        rooms.add(new Room(26,"Ауд. 12", RoomType.LECTYRE));
+        rooms.add(new Room(28,"Ауд. 13", RoomType.LECTYRE));
+        rooms.add(new Room(31,"Ауд. 14", RoomType.LECTYRE));
+        rooms.add(new Room(33,"Ауд. 14a", RoomType.LECTYRE));
+        rooms.add(new Room(36,"Ауд. 15", RoomType.LECTYRE));
+        rooms.add(new Room(34,"Ауд. 16", RoomType.LECTYRE));
+        rooms.add(new Room(30,"Ауд. 17", RoomType.LECTYRE));
+        rooms.add(new Room(39,"Ауд. 19", RoomType.LECTYRE));
+        rooms.add(new Room(40,"Ауд. 20", RoomType.LECTYRE));
+        rooms.add(new Room(39,"Ауд. 19", RoomType.LECTYRE));
+        rooms.add(new Room(41,"М. туалет", RoomType.TOILET));
+        rooms.add(new Room(42,"Ж. туалет", RoomType.TOILET));
 
-        int pos;
         try {
-            pos = getArguments().getInt("position");
+            pos = getArguments().getInt("position",0);
             startRoom = rooms.get(pos);
             rooms.remove(pos);
         } catch (NullPointerException e){
@@ -74,6 +82,10 @@ public class DestinationFragment extends Fragment {
                         "Вы направляетесь из "+(startRoom!=null?startRoom.getLabel():"")
                                 +" в "+rooms.get(position).getLabel()+
                                 "\nЦель вашего визита?", Toast.LENGTH_LONG).show();
+                // Start and destination positions
+                Bundle bundle = new Bundle();
+                bundle.putInt("positionS", pos);
+                bundle.putInt("positionD", position);
                 // Navigate to next screen
                 Navigation.findNavController(v)
                         .navigate(R.id.action_destinationFragment_to_advActivity);

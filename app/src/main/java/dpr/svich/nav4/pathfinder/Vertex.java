@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.Getter;
 
 /**
- * Вершина графа
+ * Класс описывающий вершину графа
  */
 @Data
 public class Vertex {
