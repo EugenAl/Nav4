@@ -13,7 +13,12 @@ public class AdvActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adv);
 
+        // get arguments
+        Bundle args = getIntent().getExtras();
+        int posS = args.getInt("positionS");
+        int posD = args.getInt("positionD");
+        // path finder init and find path
         FinderA finderA = new FinderA();
-        finderA.findPath(1, 9);
+        finderA.findPath(posS, posD);
     }
 }
