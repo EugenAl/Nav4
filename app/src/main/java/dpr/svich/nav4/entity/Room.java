@@ -21,4 +21,8 @@ public class Room {
     public RoomType getType() {
         return type;
     }
+
+    public long getId() {
+        return id;
+    }
 }

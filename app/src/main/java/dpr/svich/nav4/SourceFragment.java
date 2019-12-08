@@ -71,7 +71,7 @@ public class SourceFragment extends Fragment {
                         Toast.LENGTH_LONG).show();
                 // Position of start
                 Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
+                bundle.putInt("position", (int)rooms.get(position).getId());
                 // Navigate to next screen
                 Navigation.findNavController(v)
                         .navigate(R.id.action_sourceFragment_to_destinationFragment, bundle);

@@ -107,8 +107,8 @@ public class FinderA {
         vertexes.put(38, new Vertex("ph2_9", 38, 10.2d));
         vertexes.put(39, new Vertex("к.19", 39, 11d));
         vertexes.put(40, new Vertex("к.20", 40, 11.2d));
-        vertexes.put(40, new Vertex("М. туалет", 41, 23.2d));
-        vertexes.put(40, new Vertex("Ж. туалет", 42, 23.5d));
+        vertexes.put(41, new Vertex("М. туалет", 41, 23.2d));
+        vertexes.put(42, new Vertex("Ж. туалет", 42, 23.5d));
     }
     public FinderA() {
         init();
@@ -163,6 +163,8 @@ public class FinderA {
 
             }
         }
+
+        //todo сформировать список маршрута
         return null;
     }
 

@@ -85,10 +85,10 @@ public class DestinationFragment extends Fragment {
                 // Start and destination positions
                 Bundle bundle = new Bundle();
                 bundle.putInt("positionS", pos);
-                bundle.putInt("positionD", position);
+                bundle.putInt("positionD", (int)rooms.get(position).getId());
                 // Navigate to next screen
                 Navigation.findNavController(v)
-                        .navigate(R.id.action_destinationFragment_to_advActivity);
+                        .navigate(R.id.action_destinationFragment_to_advActivity, bundle);
             }
 
             @Override
