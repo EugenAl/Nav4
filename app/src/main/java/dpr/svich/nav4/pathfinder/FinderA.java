@@ -3,6 +3,7 @@ package dpr.svich.nav4.pathfinder;
 import android.util.SparseArray;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
@@ -33,7 +34,7 @@ public class FinderA {
         edges.add(new Edge(12, 13, 14, 1d));
         edges.add(new Edge(13, 13, 15, 4d));
         edges.add(new Edge(14, 15, 17, 3.5d));
-        edges.add(new Edge(15, 3, 16, 5d));
+        edges.add(new Edge(15, 3 , 16, 5d));
         edges.add(new Edge(16, 16, 18, 5d));
         edges.add(new Edge(17, 18, 19, 1.5d));
         edges.add(new Edge(18, 19, 20, 1d));
@@ -123,7 +124,7 @@ public class FinderA {
 
     /**
      * Функция поиска пути по алгоритму А*
-     * Возвращает null если путь не найден.
+     * Возвращает null если путь не найден, иначе возвращается список вершин.
      * @param startId стартовая позиция
      * @param goalId конечная позиция
      * @return возврашается список вершин, являющихся путем от начальной до конечной вершины
@@ -163,8 +164,18 @@ public class FinderA {
 
             }
         }
-
-        //todo сформировать список маршрута
+        if (!Q.isEmpty()){
+            List<Vertex> findPath = new ArrayList<>();
+            findPath.add(goal);
+            Vertex vertex = vertexes.get(goal.getParentId());
+            while(vertex.getParentId() != 0){
+                findPath.add(vertex);
+                vertex = vertexes.get(vertex.getParentId());
+            }
+            findPath.add(vertex);
+            Collections.reverse(findPath);
+            return findPath;
+        }
         return null;
     }
 

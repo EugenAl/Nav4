@@ -5,7 +5,6 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import lombok.Data;
-import lombok.Getter;
 
 /**
  * Класс описывающий вершину графа
@@ -38,6 +37,11 @@ public class Vertex {
     public boolean equals(@Nullable Object obj) {
         Vertex v = (Vertex) obj;
         return (v != null && v.id == this.id && v.name.equals(this.name));
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     public Vertex(String name, int id, double hDistance) {
