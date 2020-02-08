@@ -22,4 +22,11 @@ public class PathItem {
     }
 
     public PathItem(){}
+
+    @Override
+    public String toString() {
+        return "PathItem{" +
+                "description='" + description + '\'' +
+                ", (" + distance + ")}";
+    }
 }
