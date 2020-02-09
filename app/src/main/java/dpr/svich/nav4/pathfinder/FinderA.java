@@ -132,6 +132,8 @@ public class FinderA {
     public List<Vertex> findPath(int startId, int goalId){
         Vertex start = vertexes.get(startId);
         Vertex goal = vertexes.get(goalId);
+        // существование пути
+        boolean isPath = true;
         // множество рассмотренных вершин
         List<Vertex> path = new ArrayList<>();
         // множество, сортированное по меньшему значению эвристической функции
@@ -155,16 +157,16 @@ public class FinderA {
                 double tentativeScore = current.getG() + distance(current, v);
                 if(path.contains(v) && tentativeScore >= v.getG())
                     continue;
-                if(!path.contains(v) || tentativeScore < v.getG()){
+                if(!path.contains(v) || tentativeScore < v.getG() || v.equals(goal)){
                     v.setParentId(current.getId());
                     v.setG(tentativeScore);
                     v.setHeuristicFunction(v.getG() + heuristic(v, goal));
                     Q.add(v);
                 }
-
             }
+            if(Q.isEmpty()) isPath = false;
         }
-        if (!Q.isEmpty()){
+        if (isPath){
             List<Vertex> findPath = new ArrayList<>();
             findPath.add(goal);
             Vertex vertex = vertexes.get(goal.getParentId());

@@ -17,12 +17,24 @@
         android:id="@+id/nextCard"
         android:background="@color/colorPrimary"
         android:layout_width="0dp"
-        android:layout_height="0dp" />
+        android:layout_height="0dp" >
+
+        <TextView
+            android:id="@+id/nextCardTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/topCard"
         android:background="@color/colorAccent"
         android:layout_width="0dp"
-        android:layout_height="0dp" />
+        android:layout_height="0dp" >
+
+        <TextView
+            android:id="@+id/topCardTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

@@ -64,8 +64,8 @@ public class DestinationFragment extends Fragment {
 
         try {
             pos = getArguments().getInt("position",0);
-            startRoom = rooms.get(pos);
-            rooms.remove(pos);
+            //startRoom = rooms.get(pos);
+            //rooms.remove(pos);
         } catch (NullPointerException e){
             e.printStackTrace();
         }

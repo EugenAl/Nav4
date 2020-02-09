@@ -5,12 +5,12 @@ import android.annotation.SuppressLint;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PathAnaliz {
+public class PathAnalise {
 
     private List<Vertex> path;
     private FinderA finderA;
 
-    public PathAnaliz(int positionSourse, int positionDestination) {
+    public PathAnalise(int positionSourse, int positionDestination) {
         finderA = new FinderA();
         path = finderA.findPath(positionSourse, positionDestination);
     }
@@ -21,7 +21,7 @@ public class PathAnaliz {
      * @return список путевых точек
      */
     @SuppressLint("DefaultLocale")
-    private List<PathItem> getPathList() {
+    public List<PathItem> getPathList() {
         List<PathItem> pathItems = new ArrayList<>();
         for (int i = 0; i < path.size(); i++) {
             // найдены элементы коридора
@@ -38,6 +38,11 @@ public class PathAnaliz {
                         getDistance() + finderA.distance(path.get(i - 1), path.get(i)));
 
                 corridor.setDescription("Направляйтесь по коридору к " + path.get(i).getName());
+                if(path.get(i).getName().startsWith("st")){
+                    corridor.setDescription("Направляйтесь по коридору к " +
+                            (path.get(i).getName().split("_")[1].equals("1")?
+                                    "лестнице, со стороны входа": "дальней от входа лестнице"));
+                }
                 pathItems.add(corridor);
             }
             // найдены лестницы
@@ -63,10 +68,11 @@ public class PathAnaliz {
             }
             if (!path.get(i).getName().startsWith("s")&&!path.get(i).getName().startsWith("p")){
                 PathItem point = new PathItem();
-                String goal = i == path.size()-1 ? "Вы прибыли в пункт назначения.":"";
+                String goal = i == path.size()-1 ? "Вы прибыли в пункт назначения.":"Вы находитесь";
                 point.setDescription(goal + " " + path.get(i).getName());
+                pathItems.add(point);
             }
         }
-        return null;
+        return pathItems;
     }
 }

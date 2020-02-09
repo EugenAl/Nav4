@@ -27,6 +27,6 @@ public class PathItem {
     public String toString() {
         return "PathItem{" +
                 "description='" + description + '\'' +
-                ", (" + distance + ")}";
+                ", (" + distance + " метров)}";
     }
 }
