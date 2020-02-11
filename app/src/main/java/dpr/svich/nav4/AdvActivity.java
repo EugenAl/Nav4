@@ -36,7 +36,7 @@ public class AdvActivity extends AppCompatActivity {
         // path finder init and find path
         //FinderA finderA = new FinderA();
         //finderA.findPath(posS, posD);
-        PathAnalise pathAnalise = new PathAnalise(posS,posD);
+        final PathAnalise pathAnalise = new PathAnalise(posS,posD);
         pathItems = pathAnalise.getPathList();
         topCard.setText(pathItems.get(currentPosition).getDescription());
 
@@ -44,7 +44,9 @@ public class AdvActivity extends AppCompatActivity {
             @Override
             public void onTransitionStarted(MotionLayout motionLayout, int i, int endId) {
                 if(endId == R.id.next && currentPosition+1<pathItems.size()){
-                    nextCard.setText(pathItems.get(currentPosition+1).getDescription());
+                    setNextCard(pathItems.get(currentPosition+1));
+                } else if(endId == R.id.prev && currentPosition > 0){
+                    setNextCard(pathItems.get(currentPosition-1));
                 }
             }
 
@@ -56,8 +58,9 @@ public class AdvActivity extends AppCompatActivity {
             @Override
             public void onTransitionCompleted(MotionLayout motionLayout, int i) {
                 if(i == R.id.offScreenNext){
-                    topCard.setText(nextCard.getText());
-                    currentPosition++;
+                    setTopCard(pathItems.get(++currentPosition));
+                } else if(i == R.id.offScreenPrev){
+                    setTopCard(pathItems.get(--currentPosition));
                 }
             }
 
@@ -69,4 +72,19 @@ public class AdvActivity extends AppCompatActivity {
     }
 
 
+    private void setTopCard(PathItem item){
+        TextView descriptionTextView = findViewById(R.id.topCardTextView);
+        TextView lengthTextView = findViewById(R.id.topCardLengthView);
+
+        descriptionTextView.setText(item.getDescription());
+        lengthTextView.setText(String.valueOf(item.getDistance())+" m");
+    }
+
+    private void setNextCard(PathItem item){
+        TextView descriptionTextView = findViewById(R.id.nextCardTextView);
+        TextView lengthTextView = findViewById(R.id.nextCardLengthView);
+
+        descriptionTextView.setText(item.getDescription());
+        lengthTextView.setText(String.valueOf(item.getDistance())+" m");
+    }
 }
