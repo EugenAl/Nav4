@@ -33,9 +33,6 @@ public class AdvActivity extends AppCompatActivity {
         Bundle args = getIntent().getExtras();
         int posS = args.getInt("positionS");
         int posD = args.getInt("positionD");
-        // path finder init and find path
-        //FinderA finderA = new FinderA();
-        //finderA.findPath(posS, posD);
         final PathAnalise pathAnalise = new PathAnalise(posS,posD);
         pathItems = pathAnalise.getPathList();
         topCard.setText(pathItems.get(currentPosition).getDescription());

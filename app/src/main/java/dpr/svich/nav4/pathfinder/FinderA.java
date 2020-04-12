@@ -12,7 +12,7 @@ import java.util.TreeSet;
 /**
  * Класс для поиска пути по алгоритму А*
  */
-public class FinderA {
+class FinderA {
 
 
     SparseArray<Vertex> vertexes = new SparseArray<>();
@@ -68,48 +68,48 @@ public class FinderA {
          * sp_x_y - пролет х стороны у этажа
          * phx_y - коридор на х этаже, у сегмент
          */
-        vertexes.put(1, new Vertex("Вход", 1, 0));
-        vertexes.put(2, new Vertex("ph1_1", 2, 2d));
-        vertexes.put(3, new Vertex("st_1_1", 3, 2.5d));
-        vertexes.put(4, new Vertex("к.1", 4, 2.1d));
-        vertexes.put(5, new Vertex("ph1_2", 5, 9.1d));
-        vertexes.put(6, new Vertex("к.2", 6, 9.1d));
-        vertexes.put(7, new Vertex("к.5", 7, 9.1d));
-        vertexes.put(8, new Vertex("ph1_3", 8, 14.1d));
-        vertexes.put(9, new Vertex("к.3", 9, 14.1d));
-        vertexes.put(10, new Vertex("ph1_4", 10, 21.1d));
-        vertexes.put(11, new Vertex("к.3a", 11, 21.1d));
-        vertexes.put(12, new Vertex("к.4", 12, 21.1d));
-        vertexes.put(13, new Vertex("ph1_5", 13, 22d));
-        vertexes.put(14, new Vertex("Столовая", 14, 22d));
-        vertexes.put(15, new Vertex("st_2_1", 15, 24d));
-        vertexes.put(16, new Vertex("sp_1_1", 16, 6.5d));
-        vertexes.put(17, new Vertex("sp_2_1", 17, 26d));
-        vertexes.put(18, new Vertex("st_1_2", 18, 5.1d));
-        vertexes.put(19, new Vertex("ph2_1", 19, 5d));
-        vertexes.put(20, new Vertex("к.9", 20, 5d));
-        vertexes.put(21, new Vertex("ph2_2", 21, 7d));
-        vertexes.put(22, new Vertex("к.10", 22, 7.1d));
-        vertexes.put(23, new Vertex("ph2_3", 23, 10d));
-        vertexes.put(24, new Vertex("к.11", 24, 10.1d));
-        vertexes.put(25, new Vertex("ph2_4", 25, 13d));
-        vertexes.put(26, new Vertex("к.12", 26, 13.2d));
-        vertexes.put(27, new Vertex("ph2_5", 27, 16.2d));
-        vertexes.put(28, new Vertex("к.13", 28, 16.5d));
-        vertexes.put(29, new Vertex("ph2_6", 29, 18.7d));
-        vertexes.put(30, new Vertex("к.17", 30, 19d));
-        vertexes.put(31, new Vertex("к.14", 31, 19d));
-        vertexes.put(32, new Vertex("ph2_7", 32, 21d));
-        vertexes.put(33, new Vertex("к.14а", 33, 21.2d));
-        vertexes.put(34, new Vertex("к.16", 34, 21.2d));
-        vertexes.put(35, new Vertex("ph2_8", 35, 25d));
-        vertexes.put(36, new Vertex("к.15", 36, 25.2d));
-        vertexes.put(37, new Vertex("st_2_2", 37, 25.2d));
-        vertexes.put(38, new Vertex("ph2_9", 38, 10.2d));
-        vertexes.put(39, new Vertex("к.19", 39, 11d));
-        vertexes.put(40, new Vertex("к.20", 40, 11.2d));
-        vertexes.put(41, new Vertex("М. туалет", 41, 23.2d));
-        vertexes.put(42, new Vertex("Ж. туалет", 42, 23.5d));
+        vertexes.put(1, new Vertex("Вход", 1, 0, 0));
+        vertexes.put(2, new Vertex("ph1_1", 2, 2d, 0));
+        vertexes.put(3, new Vertex("st_1_1", 3, 2.5d, 0));
+        vertexes.put(4, new Vertex("к.1", 4, 2.1d, 0));
+        vertexes.put(5, new Vertex("ph1_2", 5, 9.1d, 0));
+        vertexes.put(6, new Vertex("к.2", 6, 9.1d, 0));
+        vertexes.put(7, new Vertex("к.5", 7, 9.1d, 0));
+        vertexes.put(8, new Vertex("ph1_3", 8, 14.1d, 0));
+        vertexes.put(9, new Vertex("к.3", 9, 14.1d, 0));
+        vertexes.put(10, new Vertex("ph1_4", 10, 21.1d, 0));
+        vertexes.put(11, new Vertex("к.3a", 11, 21.1d, 0));
+        vertexes.put(12, new Vertex("к.4", 12, 21.1d, 0));
+        vertexes.put(13, new Vertex("ph1_5", 13, 22d, 0));
+        vertexes.put(14, new Vertex("Столовая", 14, 22d, 0));
+        vertexes.put(15, new Vertex("st_2_1", 15, 24d, 0));
+        vertexes.put(16, new Vertex("sp_1_1", 16, 6.5d, 0.5d));
+        vertexes.put(17, new Vertex("sp_2_1", 17, 26d, 0.5d));
+        vertexes.put(18, new Vertex("st_1_2", 18, 5.1d, 2));
+        vertexes.put(19, new Vertex("ph2_1", 19, 5d, 2));
+        vertexes.put(20, new Vertex("к.9", 20, 5d, 2));
+        vertexes.put(21, new Vertex("ph2_2", 21, 7d, 2));
+        vertexes.put(22, new Vertex("к.10", 22, 7.1d, 2));
+        vertexes.put(23, new Vertex("ph2_3", 23, 10d, 2));
+        vertexes.put(24, new Vertex("к.11", 24, 10.1d, 2));
+        vertexes.put(25, new Vertex("ph2_4", 25, 13d, 2));
+        vertexes.put(26, new Vertex("к.12", 26, 13.2d, 2));
+        vertexes.put(27, new Vertex("ph2_5", 27, 16.2d, 2));
+        vertexes.put(28, new Vertex("к.13", 28, 16.5d, 2));
+        vertexes.put(29, new Vertex("ph2_6", 29, 18.7d, 2));
+        vertexes.put(30, new Vertex("к.17", 30, 19d, 2));
+        vertexes.put(31, new Vertex("к.14", 31, 19d, 2));
+        vertexes.put(32, new Vertex("ph2_7", 32, 21d, 2));
+        vertexes.put(33, new Vertex("к.14а", 33, 21.2d, 2));
+        vertexes.put(34, new Vertex("к.16", 34, 21.2d, 2));
+        vertexes.put(35, new Vertex("ph2_8", 35, 25d, 2));
+        vertexes.put(36, new Vertex("к.15", 36, 25.2d, 2));
+        vertexes.put(37, new Vertex("st_2_2", 37, 25.2d, 2));
+        vertexes.put(38, new Vertex("ph2_9", 38, 10.2d, 2));
+        vertexes.put(39, new Vertex("к.19", 39, 11d, 2));
+        vertexes.put(40, new Vertex("к.20", 40, 11.2d, 2));
+        vertexes.put(41, new Vertex("М. туалет", 41, 23.2d,0));
+        vertexes.put(42, new Vertex("Ж. туалет", 42, 23.5d, 2));
     }
     public FinderA() {
         init();
@@ -182,7 +182,8 @@ public class FinderA {
     }
 
     private double heuristic(Vertex o1, Vertex o2){
-        return Math.abs(o1.getHDistance() - o2.getHDistance());
+        return Math.sqrt(Math.pow((o1.getXDistance() - o2.getXDistance()), 2) +
+                Math.pow((o1.getYDistance() - o2.getYDistance()), 2));
     }
 
 

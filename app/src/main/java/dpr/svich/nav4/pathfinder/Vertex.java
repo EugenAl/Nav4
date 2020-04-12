@@ -28,7 +28,10 @@ public class Vertex {
     private List<Vertex> adjacentVertex;
 
     //  дистанция от входа (эвристическая)
-    private double hDistance;
+    private double xDistance;
+
+    //  высота от входа (эвристическая)
+    private double yDistance;
 
     //  родительская вершина
     private int parentId;
@@ -44,10 +47,11 @@ public class Vertex {
         return super.hashCode();
     }
 
-    public Vertex(String name, int id, double hDistance) {
+    public Vertex(String name, int id, double xDistance, double yDistance) {
         this.name = name;
         this.id = id;
-        this.hDistance = hDistance;
+        this.xDistance = xDistance;
+        this.yDistance = yDistance;
         adjacentVertex = new ArrayList<>();
     }
 

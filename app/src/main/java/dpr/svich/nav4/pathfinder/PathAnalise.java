@@ -10,9 +10,9 @@ public class PathAnalise {
     private List<Vertex> path;
     private FinderA finderA;
 
-    public PathAnalise(int positionSourse, int positionDestination) {
+    public PathAnalise(int positionSource, int positionDestination) {
         finderA = new FinderA();
-        path = finderA.findPath(positionSourse, positionDestination);
+        path = finderA.findPath(positionSource, positionDestination);
     }
 
     /**
