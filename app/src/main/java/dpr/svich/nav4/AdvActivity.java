@@ -54,9 +54,9 @@ public class AdvActivity extends AppCompatActivity {
 
             @Override
             public void onTransitionCompleted(MotionLayout motionLayout, int i) {
-                if(i == R.id.offScreenNext){
+                if(i == R.id.offScreenNext && currentPosition < pathItems.size()-1){
                     setTopCard(pathItems.get(++currentPosition));
-                } else if(i == R.id.offScreenPrev){
+                } else if(i == R.id.offScreenPrev && currentPosition > 0){
                     setTopCard(pathItems.get(--currentPosition));
                 }
             }

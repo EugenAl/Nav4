@@ -1,6 +1,5 @@
 package dpr.svich.nav4.pathfinder;
 
-import android.util.SparseArray;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,14 +8,16 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import androidx.collection.SparseArrayCompat;
+
 /**
  * Класс для поиска пути по алгоритму А*
  */
 class FinderA {
 
 
-    SparseArray<Vertex> vertexes = new SparseArray<>();
-    List<Edge> edges = new ArrayList<>();
+    SparseArrayCompat<Vertex> vertexes;
+    List<Edge> edges;
 
     private void init() {
         edges.add(new Edge(0, 1, 2, 2d));
@@ -97,7 +98,7 @@ class FinderA {
         vertexes.put(27, new Vertex("ph2_5", 27, 16.2d, 2));
         vertexes.put(28, new Vertex("к.13", 28, 16.5d, 2));
         vertexes.put(29, new Vertex("ph2_6", 29, 18.7d, 2));
-        vertexes.put(30, new Vertex("к.17", 30, 19d, 2));
+        vertexes.put(30, new Vertex("к.17", 30, 19.1d, 2));
         vertexes.put(31, new Vertex("к.14", 31, 19d, 2));
         vertexes.put(32, new Vertex("ph2_7", 32, 21d, 2));
         vertexes.put(33, new Vertex("к.14а", 33, 21.2d, 2));
@@ -112,6 +113,8 @@ class FinderA {
         vertexes.put(42, new Vertex("Ж. туалет", 42, 23.5d, 2));
     }
     public FinderA() {
+        vertexes = new SparseArrayCompat<>();
+        edges = new ArrayList<>();
         init();
 
         for (Edge edge : edges) {
