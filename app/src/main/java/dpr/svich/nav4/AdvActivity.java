@@ -36,6 +36,7 @@ public class AdvActivity extends AppCompatActivity {
         int posD = args.getInt("positionD");
         final PathAnalise pathAnalise = new PathAnalise(posS,posD);
         pathItems = pathAnalise.getPathList();
+        if (pathItems == null) finish();
         setTopCard(pathItems.get(currentPosition));
 
         motionLayout.setTransitionListener(new MotionLayout.TransitionListener() {

@@ -58,7 +58,6 @@ public class DestinationFragment extends Fragment {
         rooms.add(new Room(30,"Ауд. 17", RoomType.LECTYRE));
         rooms.add(new Room(39,"Ауд. 19", RoomType.LECTYRE));
         rooms.add(new Room(40,"Ауд. 20", RoomType.LECTYRE));
-        rooms.add(new Room(39,"Ауд. 19", RoomType.LECTYRE));
         rooms.add(new Room(41,"М. туалет", RoomType.TOILET));
         rooms.add(new Room(42,"Ж. туалет", RoomType.TOILET));
 

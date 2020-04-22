@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="promo"><b>Nav4</b> - система навигации внутри помещений, использующая для навигации
+    контрольные точки. Объектом навигации выступает 4 учебный корпус ДонНТУ.\nДля построения маршрута
+    укажите свое местоположение и пункт назначения.\nСледуйте указаниям системы, выполненным в виде
+        карточек.</string>
 </resources>
