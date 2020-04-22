@@ -7,6 +7,7 @@ import dpr.svich.nav4.pathfinder.PathItem;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -35,7 +36,7 @@ public class AdvActivity extends AppCompatActivity {
         int posD = args.getInt("positionD");
         final PathAnalise pathAnalise = new PathAnalise(posS,posD);
         pathItems = pathAnalise.getPathList();
-        topCard.setText(pathItems.get(currentPosition).getDescription());
+        setTopCard(pathItems.get(currentPosition));
 
         motionLayout.setTransitionListener(new MotionLayout.TransitionListener() {
             @Override
@@ -72,16 +73,20 @@ public class AdvActivity extends AppCompatActivity {
     private void setTopCard(PathItem item){
         TextView descriptionTextView = findViewById(R.id.topCardTextView);
         TextView lengthTextView = findViewById(R.id.topCardLengthView);
+        ImageView descriptionImageView = findViewById(R.id.imageView);
 
         descriptionTextView.setText(item.getDescription());
-        lengthTextView.setText(String.valueOf(item.getDistance())+" m");
+        lengthTextView.setText(item.getDistance() +" m");
+        descriptionImageView.setImageResource(item.getImageResId());
     }
 
     private void setNextCard(PathItem item){
         TextView descriptionTextView = findViewById(R.id.nextCardTextView);
         TextView lengthTextView = findViewById(R.id.nextCardLengthView);
+        ImageView descriptionImageView = findViewById(R.id.imageView2);
 
         descriptionTextView.setText(item.getDescription());
-        lengthTextView.setText(String.valueOf(item.getDistance())+" m");
+        lengthTextView.setText(item.getDistance() +" m");
+        descriptionImageView.setImageResource(item.getImageResId());
     }
 }

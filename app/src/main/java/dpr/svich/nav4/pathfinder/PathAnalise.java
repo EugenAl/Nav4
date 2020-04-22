@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import java.util.ArrayList;
 import java.util.List;
 
+import dpr.svich.nav4.R;
+
 public class PathAnalise {
 
     private List<Vertex> path;
@@ -27,9 +29,17 @@ public class PathAnalise {
             // найдены элементы коридора
             if (path.get(i).getName().startsWith("ph")) {
                 PathItem corridor = new PathItem();
+                boolean direction = true;
+                int startDirection = Integer.parseInt(path.get(i).getName().split("_")[1]);
                 // сбор информации о расстоянии коридора
                 i++;
                 while (path.get(i).getName().startsWith("ph")) {
+                    int currentDirrection = Integer.parseInt(path.get(i).getName().split("_")[1]);
+                    if(startDirection < currentDirrection){
+                        direction = true;
+                    } else {
+                        direction = false;
+                    }
                     corridor.setDistance(corridor.
                             getDistance() + finderA.distance(path.get(i - 1), path.get(i)));
                     i++;
@@ -42,6 +52,11 @@ public class PathAnalise {
                     corridor.setDescription("Направляйтесь по коридору к " +
                             (path.get(i).getName().split("_")[1].equals("1")?
                                     "лестнице, со стороны входа": "дальней от входа лестнице"));
+                }
+                if (direction){
+                    corridor.setImageResId(R.drawable.to_right);
+                } else{
+                    corridor.setImageResId(R.drawable.to_left);
                 }
                 pathItems.add(corridor);
             }
@@ -64,12 +79,14 @@ public class PathAnalise {
                         getDistance() + finderA.distance(path.get(i - 1), path.get(i)));
                 stairs.setDescription(String.format("%s на %d %s", dir, floor,
                         (floor == 1) ? "этаж" : "этажа"));
+                stairs.setImageResId(R.drawable.stairs);
                 pathItems.add(stairs);
             }
             if (!path.get(i).getName().startsWith("s")&&!path.get(i).getName().startsWith("p")){
                 PathItem point = new PathItem();
                 String goal = i == path.size()-1 ? "Вы прибыли в пункт назначения.":"Вы находитесь";
                 point.setDescription(goal + " " + path.get(i).getName());
+                point.setImageResId(R.drawable.destination);
                 pathItems.add(point);
             }
         }
