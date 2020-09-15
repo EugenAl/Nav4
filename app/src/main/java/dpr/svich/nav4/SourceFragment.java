@@ -58,9 +58,13 @@ public class SourceFragment extends Fragment {
         rooms.add(new Room(41,"М. туалет", RoomType.TOILET));
         rooms.add(new Room(42,"Ж. туалет", RoomType.TOILET));
 
+        // Init list from layout
         sourceRecyclerView = view.findViewById(R.id.sourcesList);
+        // Set list grid with two columns
         sourceRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // Set list adapter between view and data
         sourceRecyclerView.setAdapter(new RecyclerAdapter(getContext(), rooms));
+        // Set list click listener
         sourceRecyclerView.addOnItemTouchListener(new RecyclerItemListener(getContext(),
                 sourceRecyclerView, new RecyclerItemListener.RecyclerTouchListener() {
             @Override
@@ -68,10 +72,10 @@ public class SourceFragment extends Fragment {
                 Toast.makeText(getContext(),
                         "Вы находитесь в "+rooms.get(position).getLabel(),
                         Toast.LENGTH_LONG).show();
-                // Position of start
+                // Saving position of start
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", (int)rooms.get(position).getId());
-                // Navigate to next screen
+                // Navigate to next screen and passing start position
                 Navigation.findNavController(v)
                         .navigate(R.id.action_sourceFragment_to_destinationFragment, bundle);
             }

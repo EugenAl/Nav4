@@ -45,11 +45,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         Room room = roomList.get(position);
+        // Set item label
         holder.textView.setText(room.getLabel());
         switch(room.getType()){
             case LECTYRE:
+                // Set item background
                 holder.constraintLayout.setBackground(
                         ContextCompat.getDrawable(context, R.drawable.item_shape_green));
+                // Set item text color
                 holder.textView.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
                 break;
             case TOILET:

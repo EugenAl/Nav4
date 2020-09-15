@@ -15,32 +15,27 @@ import android.widget.Button;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Стартовый фрагмент с описанием приложения
  */
 public class LaunchFragment extends Fragment {
 
-    NavController navController;
-
-
     public LaunchFragment() {
-        // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_launch, container, false);
-
+        // Set click listener for launch button
         ((Button)view.findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Navigate to next fragment
                 Navigation.findNavController(v)
                         .navigate(R.id.action_launchFragment_to_sourceFragment);
             }
         });
         return view;
     }
-
 }
